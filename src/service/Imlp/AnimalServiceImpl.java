@@ -23,9 +23,11 @@ public class AnimalServiceImpl implements GenericService<Animal> {
 
     @Override
     public Animal getById(Long id) {
-        Map<Long, List<Animal>> collect = animalList.stream().collect(Collectors.groupingBy(Animal::getId));
 
-        return null;
+        List<Animal> animalList1 = animalList.stream().filter(animal -> animal.getId() == id).toList();
+        animalList1.forEach(System.out::println);
+
+        return  null;
     }
 
     @Override
@@ -58,14 +60,14 @@ public class AnimalServiceImpl implements GenericService<Animal> {
     public List<Animal> filterByGender() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Choose gender: ");
-        String g=sc.next().toUpperCase();
+        String g = sc.next().toUpperCase();
         if (g.equals("FEMALE")) {
             return animalList.stream().filter(animal -> animal.getGender().equals(Gender.valueOf(g))).toList();
-        } else if (sc.next().equals("MALE")){
+        } else {
 
             return animalList.stream().filter(animal -> animal.getGender().equals(Gender.valueOf(g))).toList();
         }
-        return null;
+
     }
 
     @Override

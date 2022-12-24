@@ -15,6 +15,11 @@ public class Animal {
         this.gender = gender;
     }
 
+    public Animal(Long id) {
+    }
+
+
+
     public long getId() {
         return id;
     }
